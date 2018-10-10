@@ -4,6 +4,12 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-offline',
+    'gatsby-plugin-styled-components',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-netlify',
+    'gatsby-plugin-netlify-cache',
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -16,12 +22,6 @@ module.exports = {
         icon: 'src/images/gatsby-icon.png', // This path is relative to the root of the site.
       },
     },
-    'gatsby-plugin-offline',
-    'gatsby-plugin-styled-components',
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
-    'gatsby-plugin-netlify',
-    'gatsby-plugin-netlify-cache',
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
