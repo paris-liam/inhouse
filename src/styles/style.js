@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const fontArray = ['VT323','Krona One','Hammersmith One','Ewert','UnifrakturMaguntia','Fredoka One']
 export const IndexGrid = styled.div`
     display:grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr auto;
     grid-template-rows: 10% auto auto;
     grid-template-areas: 'refresh . . clock' 'logo logo logo logo' '. links links .'
 `;
