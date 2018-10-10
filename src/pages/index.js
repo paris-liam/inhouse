@@ -19,7 +19,7 @@ constructor(props){
   this.fontLogoInterval = this.fontLogoInterval.bind(this);
 }
 
-componentWillMount(){
+componentDidMount(){
   //set interval on clock every millisecond
   //set interval on changing font and logo every 30 seconds
   this.changing = setInterval(this.fontLogoInterval, 5000);
