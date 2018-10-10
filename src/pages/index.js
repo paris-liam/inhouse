@@ -30,15 +30,33 @@ componentWillUnmount(){
 }
 
 clockSetup(){
- let clock = new Date();
  // hour:minute:second:milisecond AM  Wednesday Octover 10th 2018
- let M = 0;
- let Day = 0;
- let Month = 0;
- let date = 0;
- let year = 0;
+ let clock = new Date();
+ const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+ const month = ['September','October','November','December','January','February','March','April','May','June','July','August'];
+ let M = 'AM'
+ let hour = clock.getHours();
+ if(hour > 12){
+   hour = hour % 12;
+   M = 'PM';
+ }
+ let date = clock.getDate();
+ let j = date % 10;
+ let k = date % 100;
+ if (j == 1 && k != 11) {
+  date = date + "st";
+ }
+ else if (j == 2 && k != 12) {
+  date = date + "nd";
+ }
+ else if (j == 3 && k != 13) {
+  date = date + "rd";
+ }
+ else{
+  date = date + "th";
+ }
  this.setState({
-   DateAndTime: `${clock.getHours()}:${clock.getMinutes()}:${clock.getSeconds()}:${clock.getMilliseconds()} ${M} ${Day} ${Month} ${date} ${clock.getFullYear()}`,
+   DateAndTime: `${hour}:${clock.getMinutes()}:${clock.getSeconds()}:${clock.getMilliseconds()} ${M} ${weekday[clock.getDay()]} ${month[clock.getMonth()]} ${date} ${clock.getFullYear()}`,
  });
 }
 
