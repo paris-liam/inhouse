@@ -20,9 +20,8 @@ constructor(props){
 }
 
 componentDidMount(){
-  //set interval on clock every millisecond
   //set interval on changing font and logo every 30 seconds
-  this.changing = setInterval(this.fontLogoInterval, 5000);
+  this.changing = setInterval(this.fontLogoInterval, 30000);
   this.time = setInterval(this.clockSetup,1);
 }
 componentWillUnmount(){
@@ -31,10 +30,15 @@ componentWillUnmount(){
 }
 
 clockSetup(){
+ let clock = new Date();
  // hour:minute:second:milisecond AM  Wednesday Octover 10th 2018
- let date = new Date().toLocaleString();
+ let M = 0;
+ let Day = 0;
+ let Month = 0;
+ let date = 0;
+ let year = 0;
  this.setState({
-   DateAndTime: date,
+   DateAndTime: `${clock.getHours()}:${clock.getMinutes()}:${clock.getSeconds()}:${clock.getMilliseconds()} ${M} ${Day} ${Month} ${date} ${clock.getFullYear()}`,
  });
 }
 

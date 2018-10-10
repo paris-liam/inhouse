@@ -4,7 +4,7 @@ export const fontArray = ['VT323','Krona One','Hammersmith One','Ewert','Unifrak
 export const IndexGrid = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 20% 30% 50%;
+    grid-template-rows: 10% auto auto;
     grid-template-areas: 'refresh . . clock' 'logo logo logo logo' '. links links .'
 `;
 export const DateAndTime = styled.div`
@@ -15,8 +15,12 @@ export const DateAndTime = styled.div`
 `;
 export const LogoContainer = styled.div`
     grid-area:logo;
+    justify-items:center;
+    align-items:center;
     img{
-        width:90%;
+        width:60%;
+        margin:auto auto;
+        display:block;
     }
 `;
 export const Refresh = styled.div`
@@ -32,7 +36,7 @@ export const ChangingFont = styled.div`
     grid-area:links;
     h1{
         text-align:center;
-        font-size: 3em;
+        font-size: 5vh;
         font-family:inherit;
         & > a{
             text-decoration:none;
