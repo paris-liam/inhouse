@@ -4,7 +4,7 @@ export const fontArray = ['VT323','Krona One','Hammersmith One','Ewert','Unifrak
 export const IndexGrid = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr 1fr auto;
-    grid-template-rows: 10% auto auto;
+    grid-template-rows: auto auto auto;
     grid-template-areas: 'refresh . . clock' 'logo logo logo logo' '. links links .'
 `;
 export const DateAndTime = styled.div`
