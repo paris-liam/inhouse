@@ -33,7 +33,6 @@ componentWillUnmount(){
 clockSetup(){
  // hour:minute:second:milisecond AM  Wednesday Octover 10th 2018
  let date = new Date().toLocaleString();
- console.log(date);
  this.setState({
    DateAndTime: date,
  });
