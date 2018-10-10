@@ -23,11 +23,11 @@ componentDidMount(){
   //set interval on clock every millisecond
   //set interval on changing font and logo every 30 seconds
   this.changing = setInterval(this.fontLogoInterval, 5000);
-  //this.time = setInterval(this.clockSetup,1);
+  this.time = setInterval(this.clockSetup,1);
 }
 componentWillUnmount(){
   clearInterval(this.changing);
-  //clearInterval(this.time);
+  clearInterval(this.time);
 }
 
 clockSetup(){
