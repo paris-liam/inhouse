@@ -91,9 +91,9 @@ render(){return(
       <Refresh><button onClick={this.fontLogoInterval}><i className='fa fa-redo' ></i></button></Refresh>
       <LogoContainer><img src={this.state.LogoArray[this.state.Logo]}></img></LogoContainer>
       <ChangingFont style={{fontFamily:fontArray[this.state.font]}}>
-        <h1><Link to='/shop'>Shop</Link></h1>
-        <h1><Link to='/library'>Library</Link></h1>
-        <h1><Link to='/contact'>Contact</Link></h1>
+      <Link to='/shop'><h1>Shop</h1></Link>
+      <Link to='/library'><h1>Library</h1></Link>
+      <Link to='/contact'><h1>Contact</h1></Link>
       </ChangingFont>
     </IndexGrid>
   </Layout>

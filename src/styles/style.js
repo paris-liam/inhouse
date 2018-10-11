@@ -39,14 +39,14 @@ export const Refresh = styled.div`
 `;
 export const ChangingFont = styled.div`
     grid-area:links;
-    h1{
-        text-transform:uppercase;
-        text-align: center;
-        font-size:2.25em;
-        font-family:inherit;
-        & > a{
-            text-decoration:none;
-            color:black;
+    a{
+        text-decoration:none;
+        color:black;
+        h1{
+            text-transform:uppercase;
+            text-align: center;
+            font-size:2.25em;
+            font-family:inherit;
             &:hover{
                 font-family:'Oswald';
             }
