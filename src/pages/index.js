@@ -11,7 +11,7 @@ constructor(props){
   super(props);
   this.state = {
     DateAndTime: 0,
-    font: Math.floor(Math.random() * 6),
+    font: Math.floor(Math.random() * fontArray.length()),
     Logo: Math.floor(Math.random() * 4),
     LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4],
   }

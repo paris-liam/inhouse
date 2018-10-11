@@ -25,8 +25,26 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: ['VT323','Krona One','Hammersmith One',
-                'Ewert','UnifrakturMaguntia','Fredoka One','Inknut Antiqua','Oswald']
+        fonts: [
+          'STOKE',
+          'ALMENDRA',
+          'ARCHIVO BLACK',
+          'MICHROMA',
+          'FREDOKA',
+          'PRESS START',
+          'FRECKLE FACE',
+          'UnifrakturMaguntia',
+          'UNCIAL ANTIQUA',
+          'CODYSTAR',
+          'RAKKAS',
+          'PIRATA ONE',
+          'GOBLIN ONE',
+          'Libre Barcode 39 Extended Text',
+          'Molle',
+          'SOURCE CODE PRO',
+          'Cousine',
+          'Oswald'
+        ]
       },
     },
   ],

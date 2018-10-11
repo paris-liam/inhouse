@@ -1,6 +1,23 @@
 import styled from 'styled-components';
 
-export const fontArray = ['VT323','Krona One','Hammersmith One','Ewert','UnifrakturMaguntia','Fredoka One'];
+export const fontArray = [
+    'STOKE',
+    'ALMENDRA',
+    'ARCHIVO BLACK',
+    'MICHROMA',
+    'FREDOKA',
+    'PRESS START',
+    'FRECKLE FACE',
+    'UnifrakturMaguntia',
+    'UNCIAL ANTIQUA',
+    'CODYSTAR',
+    'RAKKAS',
+    'PIRATA ONE',
+    'GOBLIN ONE',
+    'Libre Barcode 39 Extended Text',
+    'Molle',
+    'SOURCE CODE PRO',
+    'Cousine',]
 export const IndexGrid = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
