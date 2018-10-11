@@ -30,6 +30,7 @@ export const LogoContainer = styled.div`
             width:80%;
         }
     }
+    margin-bottom:1vh;
 
 `;
 export const Refresh = styled.div`

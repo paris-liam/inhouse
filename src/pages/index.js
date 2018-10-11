@@ -6,13 +6,15 @@ import InHouseMain from '../images/InHouseMain.png'
 import InHouseMain2 from '../images/InHouseMain2.png'
 import InHouseMain3 from '../images/InHouseMain3.png'
 import InHouseMain4 from '../images/InHouseMain4.png'
+import InHouseMain5 from '../images/InHouseMain5.png'
+import InHouseMain6 from '../images/InHouseMain6.png'
 
 class IndexPage extends React.Component{
 constructor(props){
   super(props);
   this.state = {
     DateAndTime: 0,
-    LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4],
+    LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4,InHouseMain5,InHouseMain6],
     font: Math.floor(Math.random() * fontArray.length),
     Logo: 0,
   }
