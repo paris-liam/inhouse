@@ -23,29 +23,16 @@ module.exports = {
       },
     },
     {
-      resolve: 'gatsby-plugin-google-fonts',
+      resolve: 'gatsby-plugin-web-font-loader',
       options: {
-        fonts:[
-          `STOKE`,
-          `ALMENDRA`,
-          `ARCHIVO BLACK`,
-          `MICHROMA`,
-          `FREDOKA`,
-          `PRESS START`,
-          `FRECKLE FACE`,
-          `UnifrakturMaguntia`,
-          `UNCIAL ANTIQUA`,
-          `CODYSTAR`,
-          `RAKKAS`,
-          `PIRATA ONE`,
-          `GOBLIN ONE`,
-          `Libre Barcode 39 Extended Text`,
-          `Molle`,
-          `SOURCE CODE PRO`,
-          `Cousine`,
-          `Oswald`,
-        ],
-      },
-    },
+        google: {
+          families:['Stoke','Almendra','Archivo Black','Michroma',
+          'Fredoka One','Press Start 2P','Freckle Face','UnifrakturMaguntia',
+          'Uncial Antiqua','Codystar','Rakkas', 'Pirata One',
+          'Goblin One','Libre Barcode 39 Extended Text',
+          'Molle','Source Code Pro','Cousine','Oswald',]
+        }
+      }
+    }
   ],
 }

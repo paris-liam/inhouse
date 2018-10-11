@@ -6,6 +6,7 @@ import InHouseMain from '../images/InHouseMain.png'
 import InHouseMain2 from '../images/InHouseMain2.png'
 import InHouseMain3 from '../images/InHouseMain3.png'
 import InHouseMain4 from '../images/InHouseMain4.png'
+
 class IndexPage extends React.Component{
 constructor(props){
   super(props);

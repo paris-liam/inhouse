@@ -1,22 +1,10 @@
 import styled from 'styled-components';
 
-export const fontArray = ['STOKE',
-    'ALMENDRA',
-    'ARCHIVO BLACK',
-    'MICHROMA',
-    'FREDOKA',
-    'PRESS START',
-    'FRECKLE FACE',
-    'UnifrakturMaguntia',
-    'UNCIAL ANTIQUA',
-    'CODYSTAR',
-    'RAKKAS',
-    'PIRATA ONE',
-    'GOBLIN ONE',
-    'Libre Barcode 39 Extended Text',
-    'Molle',
-    'SOURCE CODE PRO',
-    'Cousine',]
+export const fontArray = ['Stoke','Almendra','Archivo Black','Michroma',
+'Fredoka One','Press Start 2P','Freckle Face','UnifrakturMaguntia',
+'Uncial Antiqua','Codystar','Rakkas', 'Pirata One',
+'Goblin One','Libre Barcode 39 Extended Text',
+'Molle','Source Code Pro','Cousine',]
 export const IndexGrid = styled.div`
     display:grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
