@@ -41,7 +41,7 @@ export const ChangingFont = styled.div`
     grid-area:links;
     h1{
         text-align:center;
-        font-size:2.5em;
+        font-size:2.25em;
         font-family:inherit;
         & > a{
             text-decoration:none;
