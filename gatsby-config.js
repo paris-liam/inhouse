@@ -25,7 +25,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
-        fonts: [
+        fonts:[
           'STOKE',
           'ALMENDRA',
           'ARCHIVO BLACK',
@@ -43,8 +43,8 @@ module.exports = {
           'Molle',
           'SOURCE CODE PRO',
           'Cousine',
-          'Oswald'
-        ]
+          'Oswald',
+        ],
       },
     },
   ],

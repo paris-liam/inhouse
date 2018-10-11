@@ -12,7 +12,7 @@ constructor(props){
   this.state = {
     DateAndTime: 0,
     font: Math.floor(Math.random() * fontArray.length),
-    Logo: Math.floor(Math.random() * 4),
+    Logo: Math.floor(Math.random() * this.state.LogoArray.length),
     LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4],
   }
   this.clockSetup  = this.clockSetup.bind(this);
@@ -69,13 +69,13 @@ clockSetup(){
 fontLogoInterval(){
   const oldfont = this.state.font;
   const oldLogo = this.state.Logo;
-  let newfont  = Math.floor(Math.random() * 6);
-  let newLogo = Math.floor(Math.random() * 4);
+  let newfont  = Math.floor(Math.random() * fontArray.length);
+  let newLogo = Math.floor(Math.random() * this.state.LogoArray.length);
   while(newfont === oldfont){
-     newfont  = Math.floor(Math.random() * 6);
+     newfont  = Math.floor(Math.random() * fontArray.length);
   }
   while(newLogo === oldLogo){
-    newLogo = Math.floor(Math.random() * 4);
+    newLogo = Math.floor(Math.random() *  this.state.LogoArray.length);
  }
   this.setState({
     font: newfont,
