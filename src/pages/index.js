@@ -11,9 +11,9 @@ constructor(props){
   super(props);
   this.state = {
     DateAndTime: 0,
-    font: Math.floor(Math.random() * fontArray.length),
-    Logo: Math.floor(Math.random() * this.state.LogoArray.length),
     LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4],
+    font: Math.floor(Math.random() * fontArray.length),
+    Logo: 0,
   }
   this.clockSetup  = this.clockSetup.bind(this);
   this.fontLogoInterval = this.fontLogoInterval.bind(this);

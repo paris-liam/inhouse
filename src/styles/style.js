@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const fontArray = [
-    'STOKE',
+export const fontArray = ['STOKE',
     'ALMENDRA',
     'ARCHIVO BLACK',
     'MICHROMA',
