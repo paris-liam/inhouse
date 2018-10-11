@@ -48,7 +48,7 @@ export const ChangingFont = styled.div`
             text-decoration:none;
             color:black;
             &:hover{
-                color:hsl(130, 88%, 76%);
+                font-family:'Oswald';
             }
         }
     }

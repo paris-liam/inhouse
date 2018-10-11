@@ -26,7 +26,7 @@ module.exports = {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
         fonts: ['VT323','Krona One','Hammersmith One',
-                'Ewert','UnifrakturMaguntia','Fredoka One','Inknut Antiqua']
+                'Ewert','UnifrakturMaguntia','Fredoka One','Inknut Antiqua','Oswald']
       },
     },
   ],
