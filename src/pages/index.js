@@ -11,7 +11,7 @@ constructor(props){
   super(props);
   this.state = {
     DateAndTime: 0,
-    font: Math.floor(Math.random() * fontArray.length()),
+    font: Math.floor(Math.random() * fontArray.length),
     Logo: Math.floor(Math.random() * 4),
     LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4],
   }
@@ -30,7 +30,6 @@ componentWillUnmount(){
 }
 
 clockSetup(){
- // hour:minute:second:milisecond AM  Wednesday Octover 10th 2018
  let clock = new Date();
  const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
  const month = ['September','October','November','December','January','February','March','April','May','June','July','August'];
@@ -43,13 +42,13 @@ clockSetup(){
  let date = clock.getDate();
  let j = date % 10;
  let k = date % 100;
- if (j == 1 && k != 11) {
+ if (j === 1 && k !== 11) {
   date = date + "st";
  }
- else if (j == 2 && k != 12) {
+ else if (j === 2 && k !== 12) {
   date = date + "nd";
  }
- else if (j == 3 && k != 13) {
+ else if (j === 3 && k !== 13) {
   date = date + "rd";
  }
  else{
