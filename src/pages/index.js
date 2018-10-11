@@ -55,8 +55,15 @@ clockSetup(){
  else{
   date = date + "th";
  }
+ let milli = clock.getMilliseconds();
+ if(milli < 10 ){
+   milli = `00${milli}`;
+ }
+ else if(milli < 100){
+   milli = `0${milli}`;
+ }
  this.setState({
-   DateAndTime: `${hour}:${clock.getMinutes()}:${clock.getSeconds()}:${clock.getMilliseconds()} ${M} ${weekday[clock.getDay()]} ${month[clock.getMonth()]} ${date} ${clock.getFullYear()}`,
+   DateAndTime: `${hour}:${clock.getMinutes()}:${clock.getSeconds()}:${milli} ${M} ${weekday[clock.getDay()]} ${month[clock.getMonth()]} ${date} ${clock.getFullYear()}`,
  });
 }
 
