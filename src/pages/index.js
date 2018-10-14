@@ -33,9 +33,9 @@ constructor(props){
 }
 UNSAFE_componentWillMount(){
   this.changing = setInterval(this.fontLogoInterval, 30000);
-  this.popShow({pop1:[true,this.popX(),this.popY()]}, 1000,'pop1');
-  this.popShow({pop2:[true,this.popX(),this.popY()]}, 3000,'pop2');
-  this.popShow({pop3:[true,this.popX(),this.popY()]}, 7000, 'pop3');
+  this.popShow({pop1:[true,this.popX(95),this.popY(95)]}, 1000,'pop1');
+  this.popShow({pop2:[true,this.popX(40),this.popY(30)]}, 3000,'pop2');
+  this.popShow({pop3:[true,this.popX(90),this.popY(80)]}, 7000, 'pop3');
 }
 componentWillUnmount(){
   clearInterval(this.changing);
@@ -50,12 +50,12 @@ popShow(pop,time,name){
   }, time);
 }
 
-popX(){
-  let x = Math.floor(Math.random() * 100);
+popX(value){
+  let x = Math.random() * value;
   return `${x}%`;
 }
-popY(){
-  let y = Math.floor(Math.random() * 100);
+popY(value){
+  let y = Math.random() * value;
   return `${y}%`;
 }
 
