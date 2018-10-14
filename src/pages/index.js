@@ -4,7 +4,7 @@ import Draggable from 'react-draggable';
 
 import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont,Pop} from '../styles/style.js';
 import Layout from '../components/layout'
-import DateAndTime from '../components/DateAndTime';
+import DateAndTime from '../components/DateAndtime';
 
 import InHouseMain from '../images/InHouseMain.png'
 import InHouseMain2 from '../images/InHouseMain2.png'
