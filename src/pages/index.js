@@ -51,12 +51,12 @@ popShow(pop,time,name){
 }
 
 popX(){
-  let x = Math.floor(Math.random() * 50);
-  return `${x}vw`;
+  let x = Math.floor(Math.random() * 100);
+  return `${x}%`;
 }
 popY(){
-  let y = Math.floor(Math.random() * 70);
-  return `${y}vh`;
+  let y = Math.floor(Math.random() * 100);
+  return `${y}%`;
 }
 
 fontLogoInterval(){
