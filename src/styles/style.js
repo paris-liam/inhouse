@@ -11,13 +11,6 @@ export const IndexGrid = styled.div`
     grid-template-rows: auto auto auto;
     grid-template-areas: 'refresh clock clock clock' 'logo logo logo logo' '. links links .';
 `;
-export const DateAndTime = styled.div`
-    grid-area:clock;
-    text-align:right;
-    font-family:'Courier New', Courier, monospace;
-    margin-right:2vw;
-    font-size:.75em;
-`;
 export const LogoContainer = styled.div`
     grid-area:logo;
     justify-items:center;
@@ -58,3 +51,21 @@ export const ChangingFont = styled.div`
         }
     }
 `;
+export const Pop = styled.div`
+    height:20vh;
+    width:10vw;
+    font-family:'Oswald';
+    position:absolute;
+    &#pop1{
+        z-index: 100;
+        background-color:red;
+    }
+    &#pop2{
+        z-index: 101;
+        background-color:blue;
+    }
+    &#pop3{
+        z-index: 103;
+        background-color:green;
+    }
+`

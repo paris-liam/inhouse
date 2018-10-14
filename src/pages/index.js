@@ -1,13 +1,18 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import {IndexGrid, DateAndTime, fontArray, LogoContainer,Refresh, ChangingFont} from '../styles/style.js';
+import Draggable from 'react-draggable';
+
+import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont,Pop} from '../styles/style.js';
 import Layout from '../components/layout'
+import DateAndTime from '../components/DateAndTime';
+
 import InHouseMain from '../images/InHouseMain.png'
 import InHouseMain2 from '../images/InHouseMain2.png'
 import InHouseMain3 from '../images/InHouseMain3.png'
 import InHouseMain4 from '../images/InHouseMain4.png'
 import InHouseMain5 from '../images/InHouseMain5.png'
 import InHouseMain6 from '../images/InHouseMain6.png'
+
 
 class IndexPage extends React.Component{
 constructor(props){
@@ -17,56 +22,41 @@ constructor(props){
     LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4,InHouseMain5,InHouseMain6],
     font: Math.floor(Math.random() * fontArray.length),
     Logo: 0,
+    pop1: [false,0,0],
+    pop2: [false,0,0],
+    pop3: [false,0,0],
   }
-  this.clockSetup  = this.clockSetup.bind(this);
   this.fontLogoInterval = this.fontLogoInterval.bind(this);
+  this.popShow = this.popShow.bind(this);
+  this.popX = this.popX.bind(this);
+  this.popY = this.popY.bind(this);
 }
-
-componentDidMount(){
-  //set interval on changing font and logo every 30 seconds
+UNSAFE_componentWillMount(){
   this.changing = setInterval(this.fontLogoInterval, 30000);
-  this.time = setInterval(this.clockSetup,1);
+  this.popShow({pop1:[true,this.popX(),this.popY()]}, 1000,'pop1');
+  this.popShow({pop2:[true,this.popX(),this.popY()]}, 3000,'pop2');
+  this.popShow({pop3:[true,this.popX(),this.popY()]}, 7000, 'pop3');
 }
 componentWillUnmount(){
   clearInterval(this.changing);
-  clearInterval(this.time);
+  clearInterval(this.pop1);
+  clearInterval(this.pop2);
+  clearInterval(this.pop3);
+}
+popShow(pop,time,name){
+  console.log(pop);
+  this.name = setTimeout(() => {
+    this.setState(pop);
+  }, time);
 }
 
-clockSetup(){
- let clock = new Date();
- const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
- const month = ['September','October','November','December','January','February','March','April','May','June','July','August'];
- let M = 'AM'
- let hour = clock.getHours();
- if(hour > 12){
-   hour = hour % 12;
-   M = 'PM';
- }
- let date = clock.getDate();
- let j = date % 10;
- let k = date % 100;
- if (j === 1 && k !== 11) {
-  date = date + "st";
- }
- else if (j === 2 && k !== 12) {
-  date = date + "nd";
- }
- else if (j === 3 && k !== 13) {
-  date = date + "rd";
- }
- else{
-  date = date + "th";
- }
- let milli = clock.getMilliseconds();
- if(milli < 10 ){
-   milli = `00${milli}`;
- }
- else if(milli < 100){
-   milli = `0${milli}`;
- }
- this.setState({
-   DateAndTime: `${hour}:${clock.getMinutes()}:${clock.getSeconds()}:${milli} ${M} ${weekday[clock.getDay()]} ${month[clock.getMonth()]} ${date} ${clock.getFullYear()}`,
- });
+popX(){
+  let x = Math.floor(Math.random() * 50);
+  return `${x}vw`;
+}
+popY(){
+  let y = Math.floor(Math.random() * 70);
+  return `${y}vh`;
 }
 
 fontLogoInterval(){
@@ -86,18 +76,22 @@ fontLogoInterval(){
   })
 }
 
-render(){return(
+render(){
+  return(
   <Layout>
     <IndexGrid >
-      <DateAndTime>{this.state.DateAndTime}</DateAndTime>
+      <DateAndTime/>
       <Refresh><button onClick={this.fontLogoInterval}><i className='fa fa-redo' ></i></button></Refresh>
-      <LogoContainer><img src={this.state.LogoArray[this.state.Logo]}></img></LogoContainer>
+      <LogoContainer><img src={this.state.LogoArray[this.state.Logo]} alt='inhouse-logo'></img></LogoContainer>
       <ChangingFont style={{fontFamily:fontArray[this.state.font]}}>
       <Link to='/shop'><h1>Shop</h1></Link>
       <Link to='/library'><h1>Library</h1></Link>
       <Link to='/contact'><h1>Contact</h1></Link>
       </ChangingFont>
     </IndexGrid>
+    {this.state.pop1[0] && <Draggable><Pop id='pop1' style={{top:this.state.pop1[2], left:this.state.pop1[1]}}><button onClick={()=>{this.popShow({pop1:false})}}>X</button>Pop1</Pop></Draggable>}
+    {this.state.pop2[0] && <Draggable><Pop id='pop2' style={{top:this.state.pop2[2], left:this.state.pop2[1]}}><button onClick={()=>{this.popShow({pop2:false})}}>X</button>Pop2</Pop></Draggable>}
+    {this.state.pop3[0] && <Draggable><Pop id='pop3' style={{top:this.state.pop3[2], left:this.state.pop3[1]}}><button onClick={()=>{this.popShow({pop3:false})}}>X</button>Pop3</Pop></Draggable>}
   </Layout>
 )}
 }
