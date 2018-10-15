@@ -27,6 +27,13 @@ export const PopStyle = styled.div`
     color: #bcbcbc;
     font-size: 13px;
     margin: 0;
+    a{
+        color:inherit;
+        text-decoration:none;
+    }
+    a:hover{
+        color:'blue'
+    }
     }
     button {
     border: 2px solid;
@@ -58,9 +65,8 @@ class Pop extends React.Component{
             x:this.props.pop.x,
             y:this.props.pop.y,
             z:this.props.pop.z,
-            link:'',
-        }
 
+        }
         this.removePop = this.removePop.bind(this);
     }
     removePop(id){
@@ -75,11 +81,14 @@ class Pop extends React.Component{
                         <div className="pull-right">
                             <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>
                         </div>
-                        <h1><div className="icon-my-computer"></div>{this.state.name}</h1>
+                        <h1>
+                            <div className="icon-my-computer"></div>
+                            {this.state.link ? (<a href={this.state.link} id={`${this.state.name}_link`} draggable='false'>{this.state.name}</a>):(this.state.name)}
+                        </h1>
                     </div>
-                     <a href='https://www.google.com' draggable='false'><div className='body'>
+                     <div className='body'>
                         <img draggable="false" src={Grit}></img>
-                    </div></a>
+                    </div>
                 </PopStyle>
             </Draggable>
         )
