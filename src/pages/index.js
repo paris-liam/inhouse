@@ -28,6 +28,7 @@ constructor(props){
   this.popShow = this.popShow.bind(this);
   this.popX = this.popX.bind(this);
   this.popY = this.popY.bind(this);
+  this.removeAllPop = this.removeAllPop.bind(this);
 }
 /*UNSAFE_componentWillMount(){
   let i = 0;
@@ -63,8 +64,6 @@ popShow(pop,z,time){
   });
 }
 
-
-
 popX(value){
   let x = Math.random() * value;
   return `${x}%`;
@@ -73,7 +72,14 @@ popY(value){
   let y = Math.random() * value;
   return `${y}%`;
 }
-
+removeAllPop(){
+  console.log('remove')
+  var popups = document.getElementsByClassName('popup')
+  console.log(popups)
+  for (var i = 0; i < popups.length; i++){
+      popups[i].style.display = 'none';
+  }
+}
 fontLogoInterval(){
   const oldfont = this.state.font;
   const oldLogo = this.state.Logo;
@@ -96,7 +102,7 @@ render(){
   <Layout>
     <IndexGrid >
       <DateAndTime/>
-      <Refresh><button onClick={this.fontLogoInterval}><i className='fa fa-redo' ></i></button></Refresh>
+      <Refresh><button onClick={this.fontLogoInterval}><i className='fa fa-redo' ></i></button><button onClick={this.removeAllPop}><i className='fa fa-times' ></i></button></Refresh>
       <LogoContainer><img src={this.state.LogoArray[this.state.Logo]} alt='inhouse-logo'></img></LogoContainer>
       <ChangingFont style={{fontFamily:fontArray[this.state.font]}}>
       <Link to='/shop'><h1>Shop</h1></Link>
@@ -105,7 +111,7 @@ render(){
       </ChangingFont>
     </IndexGrid>
     {this.state.popArray.map((pop)=>{
-        return(<Pop key={pop.name} pop={pop}/>)
+        return(<Pop key={pop.name} pop={pop} />)
     })}
     </Layout>
 )}

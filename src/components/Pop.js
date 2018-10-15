@@ -74,12 +74,12 @@ class Pop extends React.Component{
     render(){
         return(
             <Draggable>
-                <PopStyle className='container' id={this.state.name}  style={{top:this.state.y, left:this.state.x,zIndex:this.state.z, backgroundColor:this.state.color, height:`${this.state.height}vh`, width:`${this.state.width}vw`}}>
-                    <div class="title">
-                        <div class="pull-right">
-                            <button class="times" onClick={()=>(this.removePop(this.state.name))}><span class="fa fa-times"></span></button>
+                <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x,zIndex:this.state.z, backgroundColor:this.state.color, height:`${this.state.height}vh`, width:`${this.state.width}vw`}}>
+                    <div className="title">
+                        <div className="pull-right">
+                            <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>
                         </div>
-                        <h1><div class="icon-my-computer"></div>{this.state.name}</h1>
+                        <h1><div className="icon-my-computer"></div>{this.state.name}</h1>
                     </div>
                     <div className='body'>
                         popuppopuppopuppopuppopuppopuppopuppopup
