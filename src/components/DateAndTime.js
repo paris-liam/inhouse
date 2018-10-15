@@ -26,7 +26,7 @@ class DateAndTime extends React.Component{
     clockSetup(){
         let clock = new Date();
         const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-        const month = ['January','February','March','April','May','June','July','August','September','October','November','December',];
+        const month = ['January','February','March','April','May','June','July','August','September','October','November','December'];
         let M = 'AM'
         let date = clock.getDate();
         let j = date % 10;
