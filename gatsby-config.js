@@ -4,6 +4,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-netlify',
     'gatsby-plugin-offline',
     'gatsby-plugin-styled-components',
     'gatsby-transformer-sharp',
@@ -14,8 +15,6 @@ module.exports = {
         name: 'IN-HOUSE',
         short_name: 'inhouse',
         start_url: '/',
-        background_color: '#663399',
-        theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'src/images/favicon.png', // This path is relative to the root of the site.
       },
