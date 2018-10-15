@@ -109,7 +109,7 @@ render(){
       <Link to='/contact'><h1>Contact</h1></Link>
       </ChangingFont>
     </IndexGrid>
-    {window.innerWidth > 900 && this.state.popArray.map((pop)=>{
+    {this.state.popArray.map((pop)=>{
         return(<Draggable><Pop id={pop.name} key={pop.name} style={{top:pop.y, left:pop.x, backgroundColor:pop.color}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop></Draggable>)
     })}
     </Layout>
