@@ -70,18 +70,17 @@ class Pop extends React.Component{
     render(){
         return(
             <Draggable>
-                <a href='google.com'><PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'10%'}}>
+               <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'10%'}}>
                     <div className="title">
                         <div className="pull-right">
                             <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>
                         </div>
                         <h1><div className="icon-my-computer"></div>{this.state.name}</h1>
                     </div>
-
-                    <div className='body'>
+                     <a href='https://www.google.com' draggable='false'><div className='body'>
                         <img draggable="false" src={Grit}></img>
-                    </div>
-                </PopStyle></a>
+                    </div></a>
+                </PopStyle>
             </Draggable>
         )
     }
