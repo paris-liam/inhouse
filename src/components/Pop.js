@@ -77,7 +77,7 @@ class Pop extends React.Component{
                         <h1><div className="icon-my-computer"></div>{this.state.name}</h1>
                     </div>
                     <div className='body'>
-                        <img src={Grit}></img>
+                        <img draggable="false" src={Grit}></img>
                     </div>
                 </PopStyle>
             </Draggable>
