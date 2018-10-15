@@ -1,7 +1,7 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
-
+import Grit from '../images/grit.jpeg';
 export const PopStyle = styled.div`
     font-family:'Oswald';
     position:absolute;
@@ -15,7 +15,6 @@ export const PopStyle = styled.div`
     border-left-color: #dbdbdb;
     border-top-color: #dbdbdb;
     background-color: #bfbfbf;
-    max-width: 600px;
     font-size: 13px;
     padding: 2px;
     }
@@ -47,24 +46,20 @@ export const PopStyle = styled.div`
 button.times {
 right: 2px;
 }
+
 }
 `
 
-const max = 40;
-const min = 5;
 class Pop extends React.Component{
     constructor(props){
-        console.log(props);
         super(props);
         this.state = {
             name:this.props.pop.name,
-            color:this.props.pop.color,
             x:this.props.pop.x,
             y:this.props.pop.y,
             z:this.props.pop.z,
-            height: Math.random() * (max - min) + min,
-            width:Math.random() * (max - min) + min,
         }
+
         this.removePop = this.removePop.bind(this);
     }
     removePop(id){
@@ -74,7 +69,7 @@ class Pop extends React.Component{
     render(){
         return(
             <Draggable>
-                <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x,zIndex:this.state.z, backgroundColor:this.state.color, height:`${this.state.height}vh`, width:`${this.state.width}vw`}}>
+                <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'10%'}}>
                     <div className="title">
                         <div className="pull-right">
                             <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>
@@ -82,7 +77,7 @@ class Pop extends React.Component{
                         <h1><div className="icon-my-computer"></div>{this.state.name}</h1>
                     </div>
                     <div className='body'>
-                        popuppopuppopuppopuppopuppopuppopuppopup
+                        <img src={Grit}></img>
                     </div>
                 </PopStyle>
             </Draggable>

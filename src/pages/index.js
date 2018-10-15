@@ -4,7 +4,6 @@ import Pop from '../components/Pop.js'
 import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont} from '../styles/style.js';
 import Layout from '../components/layout'
 import DateAndTime from '../components/DateAndTime';
-
 import InHouseMain from '../images/InHouseMain.png'
 import InHouseMain2 from '../images/InHouseMain2.png'
 import InHouseMain3 from '../images/InHouseMain3.png'
@@ -40,9 +39,9 @@ constructor(props){
 }*/
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
-  let inputPop = [{color:'red',name:'1'},{color:'blue',name:'2'},{color:'green',name:'3'},{color:'orange',name:'4'},{color:'purple',name:'5'}]
-  for(let i = 0; i < inputPop.length; i++){
-    this.popShow(inputPop[i],i,(i+1)*1500)
+  //let inputPop = [{color:'red',name:'1'},{color:'blue',name:'2'},{color:'green',name:'3'},{color:'orange',name:'4'},{color:'purple',name:'5'}]
+  for(let i = 0; i < 40; i++){//inputPop.length; i++){
+    this.popShow({name:'I CAN FEEL IT'},i,(i+1)*300)
   }
 }
 componentWillUnmount(){
@@ -105,9 +104,9 @@ render(){
       <Refresh><button onClick={this.fontLogoInterval}><i className='fa fa-redo' ></i></button><button onClick={this.removeAllPop}><i className='fa fa-times' ></i></button></Refresh>
       <LogoContainer><img src={this.state.LogoArray[this.state.Logo]} alt='inhouse-logo'></img></LogoContainer>
       <ChangingFont style={{fontFamily:fontArray[this.state.font]}}>
-      <Link to='/shop'><h1>Shop</h1></Link>
-      <Link to='/library'><h1>Library</h1></Link>
-      <Link to='/contact'><h1>Contact</h1></Link>
+        <Link to='/shop'><h1>Shop</h1></Link>
+        <Link to='/library'><h1>Library</h1></Link>
+        <Link to='/contact'><h1>Contact</h1></Link>
       </ChangingFont>
     </IndexGrid>
     {this.state.popArray.map((pop)=>{

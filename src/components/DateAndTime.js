@@ -48,6 +48,13 @@ class DateAndTime extends React.Component{
           hour = hour % 12;
           M = 'PM';
         }
+        if(hour < 10){
+            hour = `0${hour}`;
+        }
+        let minute = clock.getMinutes();
+        if(minute < 10 ){
+            minute = `0${minute}`;
+           }
         let second = clock.getSeconds();
         if(second < 10 ){
          second = `0${second}`;
@@ -60,7 +67,7 @@ class DateAndTime extends React.Component{
           milli = `0${milli}`;
         }
         this.setState({
-          dnt: `${hour}:${clock.getMinutes()}:${second}:${milli} ${M} ${weekday[clock.getDay()]} ${month[clock.getMonth()]} ${date} ${clock.getFullYear()}`,
+          dnt: `${hour}:${minute}:${second}:${milli} ${M} ${weekday[clock.getDay()]} ${month[clock.getMonth()]} ${date} ${clock.getFullYear()}`,
         });
        }
     render(){
