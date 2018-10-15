@@ -1,8 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import Draggable from 'react-draggable';
-
-import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont,Pop} from '../styles/style.js';
+import Pop from '../components/Pop.js'
+import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont} from '../styles/style.js';
 import Layout from '../components/layout'
 import DateAndTime from '../components/DateAndTime';
 
@@ -29,7 +28,6 @@ constructor(props){
   this.popShow = this.popShow.bind(this);
   this.popX = this.popX.bind(this);
   this.popY = this.popY.bind(this);
-  this.removePop = this.removePop.bind(this);
 }
 /*UNSAFE_componentWillMount(){
   let i = 0;
@@ -43,7 +41,7 @@ componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
   let inputPop = [{color:'red',name:'1'},{color:'blue',name:'2'},{color:'green',name:'3'},{color:'orange',name:'4'},{color:'purple',name:'5'}]
   for(let i = 0; i < inputPop.length; i++){
-    this.popShow(inputPop[i],(i+1)*1500)
+    this.popShow(inputPop[i],i,(i+1)*1500)
   }
 }
 componentWillUnmount(){
@@ -52,10 +50,10 @@ componentWillUnmount(){
     clearInterval(timeout);
   })
 }
-popShow(pop,time){
+popShow(pop,z,time){
   let timeout = setTimeout(() => {
     let popArray = this.state.popArray;
-    popArray.push({x:this.popX(90),y:this.popY(80),name:pop.name,color:pop.color})
+    popArray.push({x:this.popX(90),y:this.popY(80),z:(z+100),name:pop.name,color:pop.color})
     this.setState({popArray});
   }, time);
   let timeoutArray = this.state.timeoutArray;
@@ -65,10 +63,7 @@ popShow(pop,time){
   });
 }
 
-removePop(id){
-  let pop = document.getElementById(id);
-  pop.style.display = 'none';
-}
+
 
 popX(value){
   let x = Math.random() * value;
@@ -110,7 +105,7 @@ render(){
       </ChangingFont>
     </IndexGrid>
     {this.state.popArray.map((pop)=>{
-        return(<Draggable><Pop id={pop.name} key={pop.name} style={{top:pop.y, left:pop.x, backgroundColor:pop.color}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop></Draggable>)
+        return(<Pop key={pop.name} pop={pop}/>)
     })}
     </Layout>
 )}

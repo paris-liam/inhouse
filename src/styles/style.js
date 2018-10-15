@@ -51,24 +51,3 @@ export const ChangingFont = styled.div`
         }
     }
 `;
-export const Pop = styled.div`
-    height:20vh;
-    width:10vw;
-    font-family:'Oswald';
-    position:absolute;
-    &#pop1{
-        z-index: 100;
-        background-color:red;
-    }
-    &#pop2{
-        z-index: 101;
-        background-color:blue;
-    }
-    &#pop3{
-        z-index: 103;
-        background-color:green;
-    }
-    @media screen and (max-width:850px) {
-        display:none;
-    }
-`
