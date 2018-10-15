@@ -41,6 +41,9 @@ constructor(props){
 }*/
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
+  this.popShow({name:'pop1',color:'red'},1000);
+  this.popShow({name:'pop2',color:'orange'},2000);
+  this.popShow({name:'pop3',color:'orange'},3000);
 }
 componentWillUnmount(){
   clearInterval(this.changing);
