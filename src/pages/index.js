@@ -41,9 +41,10 @@ constructor(props){
 }*/
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
-  this.popShow({name:'pop1',color:'red'},1000);
-  this.popShow({name:'pop2',color:'orange'},2000);
-  this.popShow({name:'pop3',color:'orange'},3000);
+  let inputPop = [{color:'red',name:'1'},{color:'blue',name:'2'},{color:'green',name:'3'},{color:'orange',name:'4'},{color:'purple',name:'5'}]
+  for(let i = 0; i < inputPop.length; i++){
+    this.popShow(inputPop[i],(i+1)*1500)
+  }
 }
 componentWillUnmount(){
   clearInterval(this.changing);
@@ -54,7 +55,7 @@ componentWillUnmount(){
 popShow(pop,time){
   let timeout = setTimeout(() => {
     let popArray = this.state.popArray;
-    popArray.push({x:this.popX(100),y:this.popY(100),name:pop.name,color:pop.color})
+    popArray.push({x:this.popX(90),y:this.popY(80),name:pop.name,color:pop.color})
     this.setState({popArray});
   }, time);
   let timeoutArray = this.state.timeoutArray;
@@ -108,8 +109,8 @@ render(){
       <Link to='/contact'><h1>Contact</h1></Link>
       </ChangingFont>
     </IndexGrid>
-    {this.state.popArray.map((pop)=>{
-        return(<Draggable><Pop id={pop.name} key={pop.name} style={{top:pop.y, left:pop.x}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop></Draggable>)
+    {window.innerWidth > 900 && this.state.popArray.map((pop)=>{
+        return(<Draggable><Pop id={pop.name} key={pop.name} style={{top:pop.y, left:pop.x, backgroundColor:pop.color}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop></Draggable>)
     })}
     </Layout>
 )}
