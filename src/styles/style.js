@@ -68,4 +68,7 @@ export const Pop = styled.div`
         z-index: 103;
         background-color:green;
     }
+    @media screen and (max-width:900px) {
+        display:none;
+    }
 `

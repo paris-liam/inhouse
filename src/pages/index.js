@@ -33,12 +33,9 @@ constructor(props){
 }
 UNSAFE_componentWillMount(){
   this.changing = setInterval(this.fontLogoInterval, 30000);
-  if(window.outerWidth > 900){
-    console.log('here');
     this.popShow({pop1:[true,this.popX(95),this.popY(95)]}, 1000,'pop1');
     this.popShow({pop2:[true,this.popX(40),this.popY(30)]}, 3000,'pop2');
     this.popShow({pop3:[true,this.popX(90),this.popY(80)]}, 7000, 'pop3');
-  }
 }
 componentWillUnmount(){
   clearInterval(this.changing);
