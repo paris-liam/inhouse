@@ -22,32 +22,47 @@ constructor(props){
     LogoArray:[InHouseMain,InHouseMain2,InHouseMain3,InHouseMain4,InHouseMain5,InHouseMain6],
     font: Math.floor(Math.random() * fontArray.length),
     Logo: 0,
-    pop1: [false,0,0],
-    pop2: [false,0,0],
-    pop3: [false,0,0],
+    popArray: [],
+    timeoutArray: []
   }
   this.fontLogoInterval = this.fontLogoInterval.bind(this);
   this.popShow = this.popShow.bind(this);
   this.popX = this.popX.bind(this);
   this.popY = this.popY.bind(this);
+  this.removePop = this.removePop.bind(this);
 }
 UNSAFE_componentWillMount(){
   this.changing = setInterval(this.fontLogoInterval, 30000);
-    this.popShow({pop1:[true,this.popX(95),this.popY(95)]}, 1000,'pop1');
-    this.popShow({pop2:[true,this.popX(40),this.popY(30)]}, 3000,'pop2');
-    this.popShow({pop3:[true,this.popX(90),this.popY(80)]}, 7000, 'pop3');
+  let i = 0;
+  let inputPop = [{color:'red',name:'pop1'},{color:'green',name:'pop2'},{color:'blue',name:'pop3'}];
+  inputPop.forEach((pop)=>{
+    this.popShow(pop,(3000 + (i*2000)));
+    i++;
+  });
 }
 componentWillUnmount(){
   clearInterval(this.changing);
-  clearInterval(this.pop1);
-  clearInterval(this.pop2);
-  clearInterval(this.pop3);
+  this.state.timeoutArray.forEach((timeout)=>{
+    clearInterval(timeout);
+  })
 }
-popShow(pop,time,name){
-  console.log(pop);
-  this.name = setTimeout(() => {
-    this.setState(pop);
+popShow(pop,time){
+
+  let timeout = setTimeout(() => {
+    let popArray = this.state.popArray;
+    popArray.push({x:this.popX(100),y:this.popY(100),name:pop.name,color:pop.color})
+    this.setState({popArray});
   }, time);
+  let timeoutArray = this.state.timeoutArray;
+  timeoutArray.push(timeout);
+  this.setState({
+    timeoutArray
+  });
+}
+
+removePop(id){
+  let pop = document.getElementById(id);
+  pop.style.display = 'none';
 }
 
 popX(value){
@@ -89,10 +104,10 @@ render(){
       <Link to='/contact'><h1>Contact</h1></Link>
       </ChangingFont>
     </IndexGrid>
-    {this.state.pop1[0] && <Draggable><Pop id='pop1' style={{top:this.state.pop1[2], left:this.state.pop1[1]}}><button onClick={()=>{this.popShow({pop1:false})}}>X</button>Pop1</Pop></Draggable>}
-    {this.state.pop2[0] && <Draggable><Pop id='pop2' style={{top:this.state.pop2[2], left:this.state.pop2[1]}}><button onClick={()=>{this.popShow({pop2:false})}}>X</button>Pop2</Pop></Draggable>}
-    {this.state.pop3[0] && <Draggable><Pop id='pop3' style={{top:this.state.pop3[2], left:this.state.pop3[1]}}><button onClick={()=>{this.popShow({pop3:false})}}>X</button>Pop3</Pop></Draggable>}
-  </Layout>
+    {this.state.popArray.map((pop)=>{
+        return(<Draggable><Pop id={pop.name} style={{top:pop.y, left:pop.x}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop></Draggable>)
+    })}
+    </Layout>
 )}
-}
+};
 export default IndexPage
