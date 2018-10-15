@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
-//import Draggable from 'react-draggable';
+import Draggable from 'react-draggable';
 
 import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont,Pop} from '../styles/style.js';
 import Layout from '../components/layout'
@@ -105,7 +105,7 @@ render(){
       </ChangingFont>
     </IndexGrid>
     {this.state.popArray.map((pop)=>{
-        return(<Pop id={pop.name} key={pop.name} style={{top:pop.y, left:pop.x}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop>)
+        return(<Draggable><Pop id={pop.name} key={pop.name} style={{top:pop.y, left:pop.x}}><button onClick={()=>{this.removePop(pop.name)}}>X</button>{pop.name}</Pop></Draggable>)
     })}
     </Layout>
 )}
