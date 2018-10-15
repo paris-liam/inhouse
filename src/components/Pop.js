@@ -58,6 +58,7 @@ class Pop extends React.Component{
             x:this.props.pop.x,
             y:this.props.pop.y,
             z:this.props.pop.z,
+            link:'',
         }
 
         this.removePop = this.removePop.bind(this);
@@ -69,17 +70,18 @@ class Pop extends React.Component{
     render(){
         return(
             <Draggable>
-                <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'10%'}}>
+                <a href='google.com'><PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'10%'}}>
                     <div className="title">
                         <div className="pull-right">
                             <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>
                         </div>
                         <h1><div className="icon-my-computer"></div>{this.state.name}</h1>
                     </div>
+
                     <div className='body'>
                         <img draggable="false" src={Grit}></img>
                     </div>
-                </PopStyle>
+                </PopStyle></a>
             </Draggable>
         )
     }
