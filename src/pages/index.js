@@ -21,27 +21,24 @@ constructor(props){
     font: Math.floor(Math.random() * fontArray.length),
     Logo: 0,
     popArray: [],
-    timeoutArray: []
+    timeoutArray: [],
+    popupData:this.popupData(this.props.data.allPrismicPopups.edges),
   }
   this.fontLogoInterval = this.fontLogoInterval.bind(this);
   this.popShow = this.popShow.bind(this);
   this.popX = this.popX.bind(this);
   this.popY = this.popY.bind(this);
   this.removeAllPop = this.removeAllPop.bind(this);
+  this.popupData = this.popupData.bind(this);
+
 }
-/*UNSAFE_componentWillMount(){
-  let i = 0;
-  let inputPop = [{color:'red',name:'pop1'},{color:'green',name:'pop2'},{color:'blue',name:'pop3'}];
-  inputPop.forEach((pop)=>{
-    this.popShow(pop,(3000 + (i*2000)));
-    i++;
-  });
-}*/
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
-  //let inputPop = [{color:'red',name:'1'},{color:'blue',name:'2'},{color:'green',name:'3'},{color:'orange',name:'4'},{color:'purple',name:'5'}]
-  for(let i = 0; i < 40; i++){//inputPop.length; i++){
-    this.popShow({name:'I CAN FEEL IT'},i,(i+1)*300)
+  /*for(let i = 0; i < this.state.popupData.length; i++){//inputPop.length; i++){
+    this.popShow(this.state.popupData[i],i,(i+1)*300)
+  }*/
+  for(let i = 0; i < 20; i++){//inputPop.length; i++){
+    this.popShow({name:'I CAN FEEL IT',image:null},i,(i+1)*300)
   }
 }
 componentWillUnmount(){
@@ -51,18 +48,19 @@ componentWillUnmount(){
   })
 }
 popShow(pop,z,time){
+  console.log(pop,z,time);
   let timeout = setTimeout(() => {
     let popArray = this.state.popArray;
-    popArray.push({x:this.popX(90),y:this.popY(80),z:(z+100),name:pop.name,color:pop.color})
+    popArray.push({x:this.popX(90),y:this.popY(80),z:(z+100),name:pop.name,image:pop.image})
     this.setState({popArray});
   }, time);
+  console.log('timeout set');
   let timeoutArray = this.state.timeoutArray;
   timeoutArray.push(timeout);
   this.setState({
     timeoutArray
   });
 }
-
 popX(value){
   let x = Math.random() * value;
   return `${x}%`;
@@ -72,12 +70,21 @@ popY(value){
   return `${y}%`;
 }
 removeAllPop(){
-  console.log('remove')
   var popups = document.getElementsByClassName('popup')
-  console.log(popups)
   for (var i = 0; i < popups.length; i++){
       popups[i].style.display = 'none';
   }
+}
+popupData(edges){
+  let popupData = [];
+  for(let i = 0; i < edges.length; i++ ){
+    let data = edges[i].node.data
+    popupData.push({
+      name:data.popuptitle.text,
+      image:data.popupimage.localFile.childImageSharp
+    })
+  }
+  return popupData;
 }
 fontLogoInterval(){
   const oldfont = this.state.font;
@@ -116,3 +123,29 @@ render(){
 )}
 };
 export default IndexPage
+
+export const pageQuery = graphql`
+  query IndexQuery {
+	allPrismicPopups{
+    edges{
+      node{
+        id
+        data{
+          popuptitle{
+            text
+          }
+          popupimage{
+             localFile {
+              childImageSharp {
+                fluid(maxWidth: 700) {
+                  ...GatsbyImageSharpFluid_tracedSVG
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}`

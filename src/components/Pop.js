@@ -1,10 +1,12 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
 import Grit from '../images/grit.jpeg';
 export const PopStyle = styled.div`
     font-family:'Oswald';
     position:absolute;
+    width:10%;
     @media screen and (max-width:850px) {
         display:none;
     }
@@ -65,7 +67,7 @@ class Pop extends React.Component{
             x:this.props.pop.x,
             y:this.props.pop.y,
             z:this.props.pop.z,
-
+            img: this.props.pop.image === null ? (Grit):(this.props.pop.image.fluid)
         }
         this.removePop = this.removePop.bind(this);
     }
@@ -74,9 +76,10 @@ class Pop extends React.Component{
         pop.style.display = 'none';
     }
     render(){
+        console.log(this.state);
         return(
             <Draggable>
-               <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'10%'}}>
+               <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z}}>
                     <div className="title">
                         <div className="pull-right">
                             <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>
@@ -87,7 +90,7 @@ class Pop extends React.Component{
                         </h1>
                     </div>
                      <div className='body'>
-                        <img draggable="false" src={Grit}></img>
+                        {this.state.img === Grit ? (<img draggable='false' src={this.state.img}></img>):(<Img draggable="false" fluid={this.state.img}></Img>)}
                     </div>
                 </PopStyle>
             </Draggable>

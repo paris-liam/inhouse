@@ -37,7 +37,6 @@ module.exports = {
       options: {
             repositoryName: "inhouse",
             accessToken: "MC5XOFVka0JRQUFDb0F1REtZ.77-977-9PU_vv70z77-9K2rvv71nC--_ve-_vW1UCe-_ve-_vT9adu-_vSzvv73vv70E77-9Au-_vUou",
-
             // Set a link resolver function used to process links in your content.
             // Fields with rich text formatting or links to internal content use this
             // function to generate the correct link URL.
