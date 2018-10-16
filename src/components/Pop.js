@@ -1,8 +1,6 @@
 import React from 'react';
 import Draggable from 'react-draggable';
 import styled from 'styled-components';
-import Img from 'gatsby-image';
-import Grit from '../images/grit.jpeg';
 export const PopStyle = styled.div`
     font-family:'Oswald';
     position:absolute;
@@ -89,7 +87,7 @@ class Pop extends React.Component{
                         </h1>
                     </div>
                      <div className='body'>
-                        <img draggable='false' src={this.state.img}></img>
+                        <img draggable='false' src={this.state.img} alt={this.state.name}></img>
                     </div>
                 </PopStyle>
             </Draggable>

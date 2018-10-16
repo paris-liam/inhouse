@@ -5,6 +5,7 @@ import {IndexGrid, fontArray, LogoContainer,Refresh, ChangingFont} from '../styl
 import Layout from '../components/layout'
 import DateAndTime from '../components/DateAndTime';
 import Grit from '../images/grit.jpeg';
+import { graphql } from 'gatsby'
 
 
 class IndexPage extends React.Component{
@@ -71,7 +72,6 @@ removeAllPop(){
   }
 }
 popupData(edges){
-  console.log(edges);
   let popupData = [];
   for(let i = 0; i < edges.length; i++ ){
     let data = edges[i].node.data
@@ -130,7 +130,7 @@ render(){
       </ChangingFont>
     </IndexGrid>
     {this.state.popArray.map((pop)=>{
-        return(<Pop key={pop.name} pop={pop} />)
+        return(<Pop key={pop.z} pop={pop} />)
     })}
     </Layout>
 )}

@@ -1,9 +1,9 @@
 import React from 'react';
-import { IndexGrid } from '../styles/style';
 
-const Lib = (props) => (
+const Lib = ({title,image}) => (
     <div style={{display:'grid'}}>
-        {console.log(props)}
+        <h1>{title}</h1>
+        <img src={image}></img>
     </div>
 )
 

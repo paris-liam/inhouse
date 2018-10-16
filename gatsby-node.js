@@ -9,15 +9,19 @@ exports.createPages = ({ graphql, actions }) => {
       resolve(
         graphql(
           `
-            {
-                allPrismicProduct{
-                edges {
-                  node {
-                    id
-                  }
-                }
-              }
-            }
+          {
+            allPrismicProduct{edges{node{
+              data{
+                prod_title{text}
+                prod_image1{localFile{childImageSharp{original{src}}}}
+                prod_image2{localFile{childImageSharp{original{src}}}}
+                prod_button{html}
+                prod_small
+                prod_medium
+                prod_large
+                prod_xl
+              }}}}
+          }
           `
         ).then(result => {
           if (result.errors) {
@@ -25,14 +29,15 @@ exports.createPages = ({ graphql, actions }) => {
           }
           // Create pages for each markdown file.
           result.data.allPrismicProduct.edges.forEach(({ node }) => {
-            const path = `/shop/${node.id}`;
+            const path = `/shop/${node.data.prod_title.text}`;
             createPage({
               path,
               component: shopTemplate,
+
               // In your blog post template's graphql query, you can use path
               // as a GraphQL variable to query for data from the markdown file.
               context: {
-                path,
+                prodInfo: node.data,
               },
             })
           })

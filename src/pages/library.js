@@ -1,21 +1,14 @@
 import React from 'react'
-//import { Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Lib from '../components/Lib';
 import Layout from '../components/layout'
-
 class Library extends React.Component{
-  constructor(props){
-    super(props);
-    this.state={
-      data:''
-    }
-  }
   render(){return(  <Layout>
     <h1>Library</h1>
     <div style={{display:'grid'}}>
-    {/*this.props.data.allPrismicLibraryItems.edges.map((node)=>{
-      return(<Lib>x</Lib>)
-    })*/}
+    {this.props.data.allPrismicLibraryItem.edges.map((node)=>{
+      return <Lib title={node.node.data.lib_title.text} image={node.node.data.lib_image.localFile.childImageSharp.original.src} />
+    })}
     </div>
   </Layout>)}
 }
@@ -23,13 +16,9 @@ class Library extends React.Component{
 export default Library
 
 export const pageQuery = graphql`
-  query LibQuery {
-    allPrismicLibraryItem{
-    edges{
-      node{
-        id
-      }
-    }
-  }
-
-}`
+  query LibQuery{allPrismicLibraryItem{edges{node{
+    data{
+      lib_image{localFile{childImageSharp{original{src}}}}
+      lib_title{text}
+    }}}}}
+`
