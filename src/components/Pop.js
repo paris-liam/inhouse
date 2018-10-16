@@ -67,7 +67,7 @@ class Pop extends React.Component{
             x:this.props.pop.x,
             y:this.props.pop.y,
             z:this.props.pop.z,
-            img: this.props.pop.image === null ? (Grit):(this.props.pop.image.fluid)
+            img: props.pop.image
         }
         this.removePop = this.removePop.bind(this);
     }
@@ -76,7 +76,6 @@ class Pop extends React.Component{
         pop.style.display = 'none';
     }
     render(){
-        console.log(this.state);
         return(
             <Draggable>
                <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z}}>
@@ -90,7 +89,7 @@ class Pop extends React.Component{
                         </h1>
                     </div>
                      <div className='body'>
-                        {this.state.img === Grit ? (<img draggable='false' src={this.state.img}></img>):(<Img draggable="false" fluid={this.state.img}></Img>)}
+                        <img draggable='false' src={this.state.img}></img>
                     </div>
                 </PopStyle>
             </Draggable>

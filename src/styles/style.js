@@ -34,6 +34,12 @@ export const Refresh = styled.div`
         color:black;
     }
     margin-left:1vw;
+    @media screen and (max-width:850px) {
+        & > .popBut{
+            display:none;
+        }
+    }
+
 `;
 export const ChangingFont = styled.div`
     grid-area:links;
