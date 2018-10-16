@@ -1,14 +1,28 @@
 import React from 'react'
 import { Link,graphql } from 'gatsby'
+import {ShopGrid, ShopNav, ShopButton, ShopLogo} from '../styles/shop-style';
 import Layout from '../components/layout'
 import ShopTile from '../components/ShopTile';
+import shopLogo from '../images/shop-logo.jpg'
 const Shop = (data) => (
   <Layout>
-    <h1>Shop</h1>
-    <Link to="/">Go back to the homepage</Link>
-    <h2>ok</h2>
+    <ShopGrid>
+      <ShopNav>
+        <div><ShopButton>T-SHIRTS</ShopButton></div>
+        <div><ShopButton>ZINES</ShopButton></div>
+        <div><ShopButton>TAPES</ShopButton></div>
+        <div><ShopButton>ALL</ShopButton></div>
+        <Link to='/'><ShopLogo><img src={shopLogo}></img></ShopLogo></Link>
+      </ShopNav>
 
-      {data.data.allPrismicProduct.edges.map((node)=>{
+      {/*
+              {this.state.shirt &&}
+      {this.state.zine &&}
+      {this.state.tapes &&}
+      {this.state.all &&}
+
+
+      data.data.allPrismicProduct.edges.map((node)=>{
         let info = node.node.data;
         return <ShopTile key={info.prod_title.text} title={info.prod_title.text}
         images={[info.prod_image1.localFile.childImageSharp.original.src,info.prod_image2.localFile.childImageSharp.original.src]}
@@ -17,7 +31,8 @@ const Shop = (data) => (
           info.prod_large,
           info.prod_xl]}/>
       })
-    }
+    */}
+    </ShopGrid>
   </Layout>
 )
 
