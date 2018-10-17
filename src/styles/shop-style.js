@@ -1,14 +1,13 @@
 import styled from 'styled-components';
-import Gif from '../images/shop-gif.gif'
 export const ShopGrid = styled.div`
     display:grid;
-    background-image: url(${Gif}) ;
     background-repeat: repeat;
-    background-size: 50px 50px;
+    background-size: 100px 100px;
     grid-template-columns: 1fr 5fr;
     grid-template-rows:80%;
     height:100vh;
     padding:5vh 1vw;
+    grid-column-gap: 1vh;
 `;
 export const ShopNav = styled.div`
 
@@ -23,6 +22,7 @@ background-color:white;
 }
 `
 export const ShopButton = styled.button`
+    font-family:'Courier New', Courier, monospace;
     color:white;
     background-color:black;
     font-size:2em;
@@ -35,4 +35,14 @@ export const ShopButton = styled.button`
     }
 
 `;
+export const ShopItemGrid = styled.div`
+    display:grid;
+    background-color:transparent;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-column-gap:1vh;
+    div{
+        background-color:white;
+    }
+    overflow-x:scroll;
+`
 export const ShopLogo = styled.div``;
