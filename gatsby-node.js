@@ -10,18 +10,48 @@ exports.createPages = ({ graphql, actions }) => {
         graphql(
           `
           {
-            allPrismicProduct{edges{node{
-              data{
-                prod_title{text}
-                prod_image1{localFile{childImageSharp{original{src}}}}
-                prod_image2{localFile{childImageSharp{original{src}}}}
-                prod_button{html}
-                prod_small
-                prod_medium
-                prod_large
-                prod_xl
-              }}}}
+            allPrismicProduct {
+              edges {
+                node {
+                  data {
+                    prod_title {
+                      text
+                    }
+                    prod_image1 {
+                      localFile {
+                        childImageSharp {
+                          original {
+                            src
+                          }
+                        }
+                      }
+                    }
+                    prod_image2 {
+                      localFile {
+                        childImageSharp {
+                          original {
+                            src
+                          }
+                        }
+                      }
+                    }
+                    prod_small
+                    prod_medium
+                    prod_large
+                    prod_xl
+                    prod_button{raw{
+                      type
+                      text
+                    }}
+                    type
+                    instock
+                    price
+                  }
+                }
+              }
+            }
           }
+
           `
         ).then(result => {
           if (result.errors) {

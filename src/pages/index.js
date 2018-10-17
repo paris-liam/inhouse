@@ -32,11 +32,8 @@ constructor(props){
 }
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
-  /*for(let i = 0; i < this.state.popupData.length; i++){//inputPop.length; i++){
+  for(let i = 0; i < this.state.popupData.length; i++){//inputPop.length; i++){
     this.popShow(this.state.popupData[i],i,(i+1)*300)
-  }*/
-  for(let i = 0; i < 60; i++){//inputPop.length; i++){
-    this.popShow({name:'I CAN FEEL IT',image:Grit},i,(i+1)*100)
   }
 }
 componentWillUnmount(){

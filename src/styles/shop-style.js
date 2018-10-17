@@ -39,7 +39,7 @@ export const ShopItemGrid = styled.div`
     display:grid;
     background-color:transparent;
     grid-template-columns: 1fr 1fr 1fr;
-    grid-column-gap:1vh;
+    grid-column-gap:2vw;
     div{
         background-color:white;
     }
