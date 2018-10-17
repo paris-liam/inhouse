@@ -4,6 +4,7 @@ export const ShopGrid = styled.div`
     display:grid;
     background-image: url(${Gif}) ;
     background-repeat: repeat;
+    background-size: 50px 50px;
     grid-template-columns: 1fr 5fr;
     grid-template-rows:80%;
     height:100vh;
