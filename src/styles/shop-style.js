@@ -70,7 +70,7 @@ export const ShopItemGrid = styled.div`
     overflow-x:none;
     @media only screen and (max-width:800px) {
         grid-template-columns:auto;
-        padding: 0 10vw;
+        padding: 0 15vw;
     }
 `
 export const ShopLogo = styled.div``;

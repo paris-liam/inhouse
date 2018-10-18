@@ -7,14 +7,17 @@ const Tile = styled.div`
     font-family:'Courier New',Courier,monospace;
     display:grid;
     padding-bottom:2vh;
-    & > div.ImageContainer{
+    & > a > div.ImageContainer{
         display:grid;
         align-items:center;
         justify-items:center;
 
     }
-    & > div.ImageContainer > img.secondImage{
+    & > a > div.ImageContainer > img.secondImage{
         display:none;
+    }
+    & > a{
+        text-decoration:none;
     }
     @media screen and (min-width:900px) {
         &:hover > div.ImageContainer{
@@ -34,13 +37,13 @@ const Name = styled.div`
     justify-items:center;
     align-items:center;
     padding:5vh;
-    & > *{
+    @media only screen and (max-width:900px) {
+    font-size:2em;
     }
     &.soldout > p{
         background-color:black;
         color:red;
         padding: 1vh 10vh;
-
     }
     color:black;
     background-color:white;
@@ -60,7 +63,7 @@ class ShopTile extends React.Component{
 
     render(){
         return(
-            <Tile>
+            <Tile><a href={`/shop/${this.state.title}`}>
                 <div className='ImageContainer' id={`imageContainer${this.state.title}`}>
                     <img className='firstImage' src={this.state.images[0]}></img>
                     {this.state.images.length > 1 && <img  className='secondImage' src={this.state.images[1]}></img>}
@@ -69,7 +72,7 @@ class ShopTile extends React.Component{
                 <p>${this.state.price}.00</p></Name>):(<Name className='soldout'><p style={{textDecoration:'line-through'}}>{this.state.title}</p>
                 <p>SOLDOUT</p></Name>)
                 }
-            </Tile>
+           </a></Tile>
         )}
 }
 
