@@ -16,7 +16,8 @@ const Tile = styled.div`
     & > div.ImageContainer > img.secondImage{
         display:none;
     }
-    &:hover > div.ImageContainer{
+    @media screen and (min-width:900px) {
+        &:hover > div.ImageContainer{
         & > img.firstImage{
             display:none;
         }
@@ -25,18 +26,21 @@ const Tile = styled.div`
 
         }
     }
+    }
+
 `
 const Name = styled.div`
     display:grid;
     justify-items:center;
     align-items:center;
+    padding:5vh;
     & > *{
-        display:inline;
     }
-    &.soldout > *{
-        display:inline;
+    &.soldout > p{
         background-color:black;
         color:red;
+        padding: 1vh 10vh;
+
     }
     color:black;
     background-color:white;
