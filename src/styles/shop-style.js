@@ -11,6 +11,7 @@ export const ShopGrid = styled.div`
     @media only screen and (max-width:1000px) {
         grid-template-columns:auto;
         grid-template-rows: 25% auto;
+        padding:2vh 1vw;
     }
 `;
 export const ShopNav = styled.div`
