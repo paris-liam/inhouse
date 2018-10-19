@@ -33,7 +33,7 @@ constructor(props){
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
   for(let i = 0; i < this.state.popupData.length; i++){//inputPop.length; i++){
-    this.popShow(this.state.popupData[i],i,(i+1)*300)
+    this.popShow(this.state.popupData[i],i,(i+1)*600)
   }
 }
 componentWillUnmount(){
