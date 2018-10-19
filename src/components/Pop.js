@@ -4,7 +4,7 @@ import styled from 'styled-components';
 export const PopStyle = styled.div`
     font-family:'Oswald';
     position:absolute;
-    width:10%;
+    width:100%;
     @media screen and (max-width:850px) {
         display:none;
     }
