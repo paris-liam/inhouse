@@ -87,7 +87,7 @@ class Pop extends React.Component{
                         </h1>
                     </div>
                      <div className='body'>
-                        <img draggable='false' src={this.state.img} alt={this.state.name}></img>
+                        <img draggable='false' src={this.state.img} alt={this.state.name} style={{width:'100%'}}></img>
                     </div>
                 </PopStyle>
             </Draggable>
