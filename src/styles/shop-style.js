@@ -15,7 +15,8 @@ export const ShopGrid = styled.div`
     }
     @media only screen and (max-width:500px) {
         grid-template-rows: 10% 85%;
-        overflow:none;
+        height:100vh;
+        position:fixed;
     }
 `;
 export const ShopNav = styled.div`
