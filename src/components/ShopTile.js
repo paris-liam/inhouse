@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const Tile = styled.div`
     height:auto;
+    padding-top:2vh;
     font-family:'Courier New',Courier,monospace;
     display:grid;
     & > a > div.ImageContainer{
@@ -60,7 +61,6 @@ const Name = styled.div`
     display:grid;
     justify-items:center;
     align-items:center;
-    padding:2vh;
     @media only screen and (max-width:900px) {
     font-size:2em;
     }

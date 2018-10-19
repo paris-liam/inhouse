@@ -25,7 +25,7 @@ export const LogoContainer = styled.div`
         margin:auto auto;
         display:block;
         @media screen and (max-width:900px){
-            width:80%;
+            width:90%;
         }
     }
     margin-bottom:1vh;

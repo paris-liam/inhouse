@@ -79,10 +79,10 @@ class Shop extends React.Component{
       <ShopGrid style={{ backgroundImage: `url(${this.state.gifArray[this.state.gif]})` }}>
         <ShopNav>
           <div><ShopButton onClick={()=>this.toggleType('shirt')}>T-SHIRTS</ShopButton></div>
-          <div><ShopButton onClick={()=>this.toggleType('zine')}>ZINES</ShopButton></div>
-          <div><ShopButton onClick={()=>this.toggleType('tape')}>TAPES</ShopButton></div>
-          <div><ShopButton onClick={()=>this.toggleType('all')}>ALL</ShopButton></div>
-          <Link to='/'><ShopLogo><img src={shopLogo}></img></ShopLogo></Link>
+          <div><ShopButton onClick={()=>this.toggleType('zine')}>&nbsp;ZINES&nbsp;&nbsp;</ShopButton></div>
+          <div><ShopButton onClick={()=>this.toggleType('tape')}>&nbsp;TAPES&nbsp;&nbsp;</ShopButton></div>
+          <div><ShopButton onClick={()=>this.toggleType('all')}>&nbsp;&nbsp;ALL&nbsp;&nbsp;&nbsp;</ShopButton></div>
+          <ShopLogo><Link to='/'><img src={shopLogo}></img></Link></ShopLogo>
         </ShopNav>
         <ShopItemGrid>
           {this.state.shirt &&
