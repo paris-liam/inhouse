@@ -3,19 +3,19 @@ export const ShopGrid = styled.div`
     display:grid;
     background-repeat: repeat;
     background-size: 100px 100px;
-    grid-template-columns: 1fr 5fr;
+    grid-template-columns: 20% auto;
     grid-template-rows:90%;
     height:100vh;
     padding:5vh 1vw;
     grid-column-gap: 1vh;
     @media only screen and (max-width:1000px) {
         grid-template-columns:auto;
-        grid-template-rows: 25% auto;
+        grid-template-rows: 15% 85%;
         padding:2vh 1vw;
     }
 `;
 export const ShopNav = styled.div`
-margin: 5vh 0;
+margin: 2vh 0;
 display:grid;
 grid-template-columns:auto;
 grid-template-rows: repeat(5,1fr);
@@ -26,6 +26,9 @@ background-color:white;
     justify-items:left;
     margin-left:5px;
 }
+& > a > div > img{
+            width:50%;
+        }
 @media only screen and (max-width:1000px) {
         grid-template-columns:repeat(5,1fr);
         grid-template-rows: auto;
@@ -36,9 +39,7 @@ background-color:white;
             align-self: center;
             justify-self:center;
         }
-        & > a > div > img{
-            width:40%;
-        }
+
     }
 `
 export const ShopButton = styled.button`
@@ -61,16 +62,16 @@ export const ShopButton = styled.button`
 export const ShopItemGrid = styled.div`
     display:grid;
     background-color:transparent;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 33% 33% 33%;
     grid-column-gap:2vw;
     div{
         background-color:white;
     }
     overflow-y:scroll;
-    overflow-x:none;
+    overflow-x:hidden;
     @media only screen and (max-width:800px) {
-        grid-template-columns:auto;
-        padding: 0 15vw;
+        grid-template-columns:30% 30% 30%;
+        margin:0 5%;
     }
 `
 export const ShopLogo = styled.div``;

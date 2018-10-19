@@ -39,7 +39,8 @@ exports.createPages = ({ graphql, actions }) => {
                     prod_medium
                     prod_large
                     prod_xl
-                    prod_button{raw{
+                    prod_button{
+                    raw{
                       type
                       text
                     }}

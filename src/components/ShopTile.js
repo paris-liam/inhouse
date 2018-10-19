@@ -6,21 +6,34 @@ const Tile = styled.div`
     height:auto;
     font-family:'Courier New',Courier,monospace;
     display:grid;
-    padding-bottom:2vh;
     & > a > div.ImageContainer{
         display:grid;
         align-items:center;
         justify-items:center;
+        img{
+            width:60%;
+        }
 
     }
     & > a > div.ImageContainer > img.secondImage{
         display:none;
     }
+    & > div.ImageContainer{
+        display:grid;
+        align-items:center;
+        justify-items:center;
+
+    }
+    & >  div.ImageContainer > img.secondImage{
+        display:none;
+    }
     & > a{
         text-decoration:none;
     }
-    @media screen and (min-width:900px) {
-        &:hover > div.ImageContainer{
+    & > a.soldoutLink{
+        pointer-events: none;
+    }
+    &:hover > a > div.ImageContainer{
         & > img.firstImage{
             display:none;
         }
@@ -29,6 +42,17 @@ const Tile = styled.div`
 
         }
     }
+    &:hover > div.ImageContainer{
+        & > img.firstImage{
+            display:none;
+        }
+        & > img.secondImage{
+        display:block;
+
+        }
+    }
+    .soldout > *{
+        cursor:not-allowed;
     }
 
 `
@@ -36,14 +60,15 @@ const Name = styled.div`
     display:grid;
     justify-items:center;
     align-items:center;
-    padding:5vh;
+    padding:2vh;
     @media only screen and (max-width:900px) {
     font-size:2em;
     }
     &.soldout > p{
         background-color:black;
         color:red;
-        padding: 1vh 10vh;
+        cursor:not-allowed;
+
     }
     color:black;
     background-color:white;
@@ -54,16 +79,24 @@ class ShopTile extends React.Component{
         this.state={
             title:this.props.info.title,
             instock:this.props.info.instock === "yes" ? (true):(false),
+            link: '',
             price:this.props.info.price,
-            images:this.props.info.images
+            images:this.props.info.images,
+            LinkClass: '',
         }
-        console.log(this.props);
-        console.log(this.state)
+
+    }
+    componentDidMount(){
+        this.state.instock ?( this.setState({
+            link:`/shop/${this.state.title}`
+        })):(this.setState({
+            LinkClass:'soldoutLink',
+        }))
     }
 
     render(){
         return(
-            <Tile><a href={`/shop/${this.state.title}`}>
+            <Tile><a className={this.state.LinkClass} href={this.state.link}>
                 <div className='ImageContainer' id={`imageContainer${this.state.title}`}>
                     <img className='firstImage' src={this.state.images[0]}></img>
                     {this.state.images.length > 1 && <img  className='secondImage' src={this.state.images[1]}></img>}
