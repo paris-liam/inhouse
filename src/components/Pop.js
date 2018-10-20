@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const PopStyle = styled.div`
     font-family:'Oswald';
     position:absolute;
-    width:100%;
     @media screen and (max-width:850px) {
         display:none;
     }
@@ -76,7 +75,7 @@ class Pop extends React.Component{
     render(){
         return(
             <Draggable>
-               <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z}}>
+               <PopStyle className='container popup' id={this.state.name}  style={{top:this.state.y, left:this.state.x, zIndex:this.state.z, width:'30%'}}>
                     <div className="title">
                         <div className="pull-right">
                             <button className="times" onClick={()=>(this.removePop(this.state.name))}><span className="fa fa-times"></span></button>

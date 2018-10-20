@@ -33,7 +33,7 @@ constructor(props){
 componentDidMount(){
   this.changing = setInterval(this.fontLogoInterval, 5000);
   for(let i = 0; i < this.state.popupData.length; i++){//inputPop.length; i++){
-    this.popShow(this.state.popupData[i],i,(i+1)*600)
+    this.popShow(this.state.popupData[i],i,(i+1)*800)
   }
 }
 componentWillUnmount(){
@@ -45,7 +45,7 @@ componentWillUnmount(){
 popShow(pop,z,time){
   let timeout = setTimeout(() => {
     let popArray = this.state.popArray;
-    popArray.push({x:this.popX(90),y:this.popY(80),z:(z+100),name:pop.name,image:pop.image})
+    popArray.push({x:this.popX(90),y:this.popY(80),z:(z+100),name:pop.name,image:pop.image, height:pop.height,width:pop.width})
     this.setState({popArray});
   }, time);
   let timeoutArray = this.state.timeoutArray;
@@ -75,7 +75,9 @@ popupData(edges){
     if(data.popup_title.text !== null && data.popup_image.localFile !== null){
       popupData.push({
         name:data.popup_title.text,
-        image:data.popup_image.localFile.childImageSharp.original.src
+        image:data.popup_image.localFile.childImageSharp.original.src,
+        height:data.popup_image.localFile.childImageSharp.original.height,
+        width:data.popup_image.localFile.childImageSharp.original.width,
       })
     }
   }
@@ -149,6 +151,8 @@ export const pageQuery = graphql`
                 childImageSharp{
                   original{
                     src
+                    height
+                    width
                   }
                 }
               }
