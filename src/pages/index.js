@@ -45,7 +45,7 @@ componentWillUnmount(){
 popShow(pop,z,time){
   let timeout = setTimeout(() => {
     let popArray = this.state.popArray;
-    popArray.push({x:this.popX(90),y:this.popY(80),z:(z+100),name:pop.name,image:pop.image, height:pop.height,width:pop.width})
+    popArray.push({x:this.popX(90),y:this.popY(50),z:(z+100),name:pop.name,image:pop.image, height:pop.height,width:pop.width})
     this.setState({popArray});
   }, time);
   let timeoutArray = this.state.timeoutArray;
@@ -121,7 +121,7 @@ render(){
     <IndexGrid >
       <DateAndTime/>
       <Refresh><button onClick={this.refreshButton}><i className='fa fa-redo' ></i></button><button className='popBut' onClick={this.removeAllPop}><i className='fa fa-times' ></i></button></Refresh>
-      <LogoContainer><img src={this.state.LogoArray[this.state.Logo]} alt='inhouse-logo'></img></LogoContainer>
+      <LogoContainer onClick={this.refreshButton}><img src={this.state.LogoArray[this.state.Logo]} alt='inhouse-logo'></img></LogoContainer>
       <ChangingFont style={{fontFamily:fontArray[this.state.font]}}>
         <Link to='/shop'><h1>Shop</h1></Link>
         <Link to='/library'><h1>Library</h1></Link>
