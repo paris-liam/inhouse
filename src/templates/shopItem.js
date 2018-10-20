@@ -42,6 +42,7 @@ formatButton(){
             select.options[i].disabled = true;
         }
     }
+
 }
 render(){
     return(
