@@ -11,16 +11,16 @@ class Lib extends React.Component{
         }
     }
 render(){return(
-    <tr onClick={()=>{this.setState({descToggle:!this.state.descToggle})}}>
-    <td>{this.state.num}</td>
-    <td className='title'>{this.state.item}</td>
-    <td>{this.state.item}</td>
-    <td>{this.state.item}</td>
-    <td>{this.state.item}</td>
-    <td>{this.state.item}</td>
+    <div onClick={()=>{this.setState({descToggle:!this.state.descToggle})}}>
+    <div style={{display:'flex'}}><div>{this.state.num}</div>
+    <div className='title'>{this.state.item}</div>
+    <div>{this.state.item}</div>
+    <div>{this.state.item}</div>
+    <div>{this.state.item}</div>
+    <div>{this.state.item}</div></div>
     {this.state.descToggle && <div>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</div>}
 
-    </tr>
+    </div>
 )}
 }
 
