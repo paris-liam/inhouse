@@ -51,7 +51,23 @@ render(){
             <h3>{this.state.price}</h3>
             <img src={this.state.images[0]} />
             <img src={this.state.images[1]}/>
-            <div id={`${this.state.title}_button`} dangerouslySetInnerHTML={{__html:this.state.button}}></div>
+            <form target="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                <input type="hidden" name="business" value="inhouse.phl@gmail.com"/>
+                <input type="hidden" name="cmd" value="_cart"/>
+                <input type="hidden" name="add" value={this.state.quantity}/>
+                <input type="hidden" name="item_name" value={this.state.title}/>
+                <input type="hidden" name="amount" value={this.state.price}/>
+                <input type="hidden" name="currency_code" value="USD"/>
+                <div><input type="hidden" name="on0" value="Sizes"/>Size&nbsp;<select name="os0">
+                        <option value="SMALL">SMALL </option>
+                        <option value="MEDIUM">MEDIUM </option>
+                        <option value="LARGE">LARGE </option>
+                        <option value="XL">XL </option>
+                        </select>
+                </div>
+                <input style={{margin:'0 auto'}} type="image" name="submit" src="https://www.paypalobjects.com/en_US/i/btn/btn_cart_LG.gif" alt="Add to Cart"/>
+                <img alt="" width="1" height="1" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif"/>
+            </form>
         </div>
 )}
 }
