@@ -3,48 +3,67 @@ import { graphql } from 'gatsby'
 import Lib from '../components/Lib';
 import Layout from '../components/layout'
 import  styled from 'styled-components';
+import test from '../images/test.png';
+
 const LIBTABLE = styled.div`
-  font-family:sans-serif;
-  font-weight:normal !important;
   display:grid;
   grid-template-columns:auto;
+  font-family:sans-serif;
+  font-size:.75rem;
   & > div{
-    border-top:1px solid #FFCCCC;
-    width:auto;
-    padding:0;
-  }
-  & > div > div.title{
-    font-weight:bold;
-  }
-  & > div.no-border > div{
-    border-top:none !important;
-    font-weight:bold;
+    display:grid;
+    grid-template-rows:auto;
+    grid-template-columns: 5% 1fr 1fr 1fr 1fr 1fr;
+    border-bottom: 1px solid rgb(255, 204, 204);
   }
 `
-const HEADDIV = styled.div``
+const HeaderRow = styled.div`
+  text-transform:uppercase;
+  font-weight:bold;
+  padding: .5vh 0;
+  &.title{
+    padding: 2vh 0;
+  }
+`
+
 class Library extends React.Component{
   render(){
-  let LibArray =['x','x','x','x','x','x','x','x','x','x'];
+  let LibArray =[{title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
+                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'}];
   let itemNum = LibArray.length+1;
   return(
     <Layout>
       <LIBTABLE>
-      <div className='no-border'>
-        <div></div>
-        <div>INHOUSE</div>
-      </div>
-      <div style={{display:'flex'}}>
-        <div>  </div>
-        <div className='title'>TITLE</div>
-        <div>PAGES</div>
-        <div>SIZE (in cm.)	</div>
-        <div>IN COLLABORATION WITH	</div>
-        <div>YEAR</div>
-      </div>
-      {LibArray.map((item)=>{
-        itemNum = itemNum-1;
-        return(<Lib num={itemNum} item={item}></Lib>)
-      })}
+        <HeaderRow className='title'>
+          <div className='spaceHolder'></div>
+          <div>INHOUSE</div>
+        </HeaderRow>
+        <HeaderRow>
+          <div className='spaceHolder'></div>
+          <div>TITLE</div>
+          <div>Artist(s)</div>
+          <div>Pages</div>
+          <div>SIZE (in cm.)	</div>
+          <div>YEAR</div>
+        </HeaderRow>
+        {LibArray.map((item)=>{
+          itemNum = itemNum-1;
+          if(itemNum < 10){
+            itemNum = `00${itemNum}`
+          }
+          else if(itemNum < 100){
+            itemNum = `0${itemNum}`
+          }
+          return(<Lib  key={item.title} num={itemNum} item={item}></Lib>)
+        })}
       </LIBTABLE>
     </Layout>)
   }
