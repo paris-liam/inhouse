@@ -3,7 +3,6 @@ import { graphql } from 'gatsby'
 import Lib from '../components/Lib';
 import Layout from '../components/layout'
 import  styled from 'styled-components';
-import test from '../images/test.png';
 
 const LIBTABLE = styled.div`
   display:grid;
@@ -27,18 +26,42 @@ const HeaderRow = styled.div`
 `
 
 class Library extends React.Component{
+  constructor(props){
+    super(props);
+    this.state = {
+      LibArray:[],
+      itemNum:0
+    }
+  }
+  componentDidMount(){
+    let LibArray = [];
+    this.props.data.allPrismicLibraryItem.edges.map((node)=>{
+      let data = node.node.data;
+      console.log(data);
+      if(data.hasOwnProperty('title')&&data.hasOwnProperty('artists')&&data.hasOwnProperty('year')&&data.hasOwnProperty('pages')&&data.hasOwnProperty('size')&&data.hasOwnProperty('imagegallery')&&data.hasOwnProperty('description')){
+      let libItem = {
+        title: data.title.text,
+        artist: data.artists.text,
+        year:data.year.text,
+        pages:data.pages.text,
+        size:data.size.text,
+        description:data.description.text,
+        images:[]
+      }
+      data.imagegallery.map((image)=>{
+        libItem.images.push(image.galleryimage.url);
+      })
+      LibArray.push(libItem);
+    }
+    })
+    this.setState({
+      itemNum:this.state.LibArray.length+1,
+      LibArray,
+    });  
+    console.log(this.state);
+    
+  }
   render(){
-  let LibArray =[{title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'},
-                 {title:'title',artist:'artist',pages:'pages',size:'SIZE',year:'year',images:[test],description:'ok ok ok well here is the description'}];
-  let itemNum = LibArray.length+1;
   return(
     <Layout>
       <LIBTABLE>
@@ -54,27 +77,44 @@ class Library extends React.Component{
           <div>SIZE (in cm.)	</div>
           <div>YEAR</div>
         </HeaderRow>
-        {LibArray.map((item)=>{
-          itemNum = itemNum-1;
-          if(itemNum < 10){
-            itemNum = `00${itemNum}`
+        {this.state.LibArray.map((item)=>{
+          console.log('ITEMS',item);
+          let Num = this.state.itemNum-1;
+          if(Num < 10){
+            Num = `00${Num}`
           }
-          else if(itemNum < 100){
-            itemNum = `0${itemNum}`
+          else if(Num < 100){
+            Num = `0${Num}`
           }
-          return(<Lib  key={item.title} num={itemNum} item={item}></Lib>)
+          return(<Lib  key={item.title} num={Num} item={item}></Lib>)
         })}
       </LIBTABLE>
     </Layout>)
   }
 }
 
-export default Library
+export default Library;
 
 export const pageQuery = graphql`
-  query LibQuery{allPrismicLibraryItem{edges{node{
-    data{
-      lib_image{localFile{childImageSharp{original{src}}}}
-      lib_title{text}
-    }}}}}
+  query LibQuery{
+    allPrismicLibraryItem{
+      edges{
+        node {
+          data{
+            imagegallery{galleryimage {
+              alt
+              copyright
+              url
+            }}
+            title{text}
+            artists{text}
+            size{text}
+            pages{text}
+            year{text}
+            description{text}
+          }
+        }
+      }
+    }
+  }
 `

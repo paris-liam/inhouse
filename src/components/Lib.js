@@ -4,12 +4,12 @@ import styled from 'styled-components';
 const LibRow= styled.div`
     grid-template-areas:'number title artist pages size year';
     &.showingTwo{
-        grid-template-rows: auto auto auto;
-        grid-template-areas: 'number title artist pages size year'  '. description description description . .' '. gallery gallery gallery gallery gallery'
+        grid-template-rows: 10% 20% 60%;
+        grid-template-areas: 'number title artist pages size year'  '. description description . . .' '. gallery gallery gallery gallery .'
     }
     &.showingThree{
         grid-template-rows: auto auto auto auto ;
-        grid-template-areas:'number title artist pages size year' '. description description description . .' '. gallery gallery gallery gallery gallery' '. . highlight highlight highlight .'
+        grid-template-areas:'number title artist pages size year' '. description description . . .' '. gallery gallery gallery gallery .' '. . highlight highlight highlight .'
     }
     & > div.number{
         padding-left:20%;
@@ -21,20 +21,26 @@ const LibRow= styled.div`
         }
     }
     & > div.descriptionBox{
-        display:grid;
+        & > div{
+            width:100%;
+        }
+        display:flex;
         grid-area:description;
-        padding-top:2vh;
+        padding:2vh 0;
     }
     & > div.descriptionImageGal{
-        display:flex;
+        display:grid;
         grid-area:gallery;
-        & > img{
-            width:10%;
+        grid-template-rows:auto auto auto; 
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+        & > div > img{
+            width:100%;
+            height:100%;
+            overflow:hidden;
         }
-
     }
     & > div.descriptionHighlight{
-        display:grid;
+        display:flex;
         grid-area:highlight;
     }
 `
@@ -69,12 +75,11 @@ render(){
         <div className='size' onClick={()=>{this.setState({descToggle:!this.state.descToggle,highlightedImage:'empty'})}}>{this.state.item.size}</div>
         <div className='year' onClick={()=>{this.setState({descToggle:!this.state.descToggle,highlightedImage:'empty'})}}>{this.state.item.year}</div>
         {this.state.descToggle && 
-            <React.Fragment>
                 <div className='descriptionBox'>
-                    <div className='descriptionText'>{this.state.item.description}</div>
-                </div>
-                <div className='descriptionImageGal'>
-                    {this.state.item.images.map((image)=><img onClick={()=>{
+                    <div>{this.state.item.description}</div>
+                </div>}
+        {this.state.descToggle &&         <div className='descriptionImageGal'>
+                    {this.state.item.images.map((image)=><div><img onClick={(image)=>{
                         if(this.state.highlightedImage != image){
                             this.setState({
                                 highlightedImage:image}
@@ -85,10 +90,8 @@ render(){
                                 highlightedImage:'empty'}
                             )
                         }
-                    }}src={image}/>)}
-                </div>
-            </React.Fragment>
-        }
+                    }}src={image}/></div>)}
+                </div>}
         {( this.state.descToggle && this.state.highlightedImage !== 'empty') && <div className='descriptionHighlight'><img onClick={()=>{this.setState({highlightedImage:'empty'})}}src={this.state.highlightedImage}></img></div>}
     </LibRow>
 )}
