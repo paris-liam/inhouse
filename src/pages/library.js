@@ -3,6 +3,7 @@ import { graphql } from 'gatsby'
 import Lib from '../components/Lib';
 import Layout from '../components/layout'
 import  styled from 'styled-components';
+import { Link } from 'gatsby';
 
 const LIBTABLE = styled.div`
   display:grid;
@@ -22,6 +23,9 @@ const HeaderRow = styled.div`
   padding: .5vh 0;
   &.title{
     padding: 2vh 0;
+    & > div > #titleLink:hover{
+      color:rgb(255, 204, 204);
+    }
   }
 `
 
@@ -67,7 +71,7 @@ class Library extends React.Component{
       <LIBTABLE>
         <HeaderRow className='title'>
           <div className='spaceHolder'></div>
-          <div>INHOUSE</div>
+          <div><Link id='titleLink' style={{color:'inherit',textDecoration:'none'}} to='/'>INHOUSE</Link></div>
         </HeaderRow>
         <HeaderRow>
           <div className='spaceHolder'></div>

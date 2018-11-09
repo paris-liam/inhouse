@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-
 const LibRow= styled.div`
     grid-template-areas:'number title artist pages size year';
     &.showingTwo{
